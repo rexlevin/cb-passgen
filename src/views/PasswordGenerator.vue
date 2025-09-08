@@ -13,10 +13,22 @@
             <n-form-item label="字符集">
                 <n-checkbox-group v-model:value="selectedCharsets">
                     <n-space vertical>
-                        <n-checkbox value="numbers" label="数字" />
-                        <n-checkbox value="lowercase" label="小写字母" />
-                        <n-checkbox value="uppercase" label="大写字母" />
-                        <n-checkbox value="symbols" label="特殊符号" />
+                        <n-space align="center">
+                            <n-checkbox value="numbers" label="数字" style="width: 90px" />
+                            <n-input v-model:value="chars.numbers" placeholder="23456789" style="width: 200px" />
+                        </n-space>
+                        <n-space align="center">
+                            <n-checkbox value="lowercase" label="小写字母" style="width: 90px" />
+                            <n-input v-model:value="chars.lowercase" placeholder="abdefghijmnqrty" style="width: 200px" />
+                        </n-space>
+                        <n-space align="center">
+                            <n-checkbox value="uppercase" label="大写字母" style="width: 90px" />
+                            <n-input v-model:value="chars.uppercase" placeholder="ABDEFGHJLMNQRTY" style="width: 200px" />
+                        </n-space>
+                        <n-space align="center">
+                            <n-checkbox value="symbols" label="特殊符号" style="width: 90px" />
+                            <n-input v-model:value="chars.symbols" placeholder="@#$%&" style="width: 200px" />
+                        </n-space>
                     </n-space>
                 </n-checkbox-group>
             </n-form-item>
@@ -35,7 +47,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 import {
     NForm,
     NFormItem,
@@ -49,14 +61,20 @@ import {
     NInput,
 } from 'naive-ui';
 
-const passwordCount = ref(1);
+const passwordCount = ref(5);
+const chars = reactive({
+    numbers: '23456789',
+    lowercase: 'abdefghijmnqrty',
+    uppercase: 'ABDEFGHJLMNQRTY',
+    symbols: '@#$%&',
+});
 const minLength = ref(6);
 const maxLength = ref(12);
 const selectedCharsets = ref(['numbers', 'lowercase', 'uppercase', 'symbols']);
 const generatedPasswords = ref('');
 
 const resetForm = () => {
-    passwordCount.value = 1;
+    passwordCount.value = 5;
     minLength.value = 6;
     maxLength.value = 12;
     selectedCharsets.value = ['numbers', 'lowercase', 'uppercase', 'symbols'];
