@@ -1,65 +1,59 @@
 <template>
     <div class="password-generator">
-        <h1>密码生成器</h1>
-        <n-form>
-            <n-form-item label="生成密码数量">
-                <n-input-number v-model:value="passwordCount" :min="1" />
-            </n-form-item>
-            <n-form-item label="密码长度范围">
-                <n-input-number v-model:value="minLength" :min="6" />
-                <span> - </span>
-                <n-input-number v-model:value="maxLength" :min="minLength" />
-            </n-form-item>
-            <n-form-item label="字符集">
-                <n-checkbox-group v-model:value="selectedCharsets">
-                    <n-space vertical>
-                        <n-space align="center">
-                            <n-checkbox value="numbers" label="数字" style="width: 90px" />
-                            <n-input v-model:value="chars.numbers" placeholder="23456789" style="width: 200px" />
-                        </n-space>
-                        <n-space align="center">
-                            <n-checkbox value="lowercase" label="小写字母" style="width: 90px" />
-                            <n-input v-model:value="chars.lowercase" placeholder="abdefghijmnqrty" style="width: 200px" />
-                        </n-space>
-                        <n-space align="center">
-                            <n-checkbox value="uppercase" label="大写字母" style="width: 90px" />
-                            <n-input v-model:value="chars.uppercase" placeholder="ABDEFGHJLMNQRTY" style="width: 200px" />
-                        </n-space>
-                        <n-space align="center">
-                            <n-checkbox value="symbols" label="特殊符号" style="width: 90px" />
-                            <n-input v-model:value="chars.symbols" placeholder="@#$%&" style="width: 200px" />
-                        </n-space>
-                    </n-space>
-                </n-checkbox-group>
-            </n-form-item>
-            <n-form-item>
-                <n-space>
-                    <n-button @click="resetForm">重置</n-button>
-                    <n-button type="primary" @click="generatePasswords">生成密码</n-button>
-                </n-space>
-            </n-form-item>
-        </n-form>
-        <n-divider />
-        <n-card title="生成的密码">
-            <n-input type="textarea" v-model:value="generatedPasswords" :rows="10" placeholder="生成的密码将显示在这里" />
-        </n-card>
+        <form class="password-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>生成密码数量</label>
+                    <input type="number" v-model="passwordCount" min="1" class="form-input" />
+                </div>
+                <div class="form-group">
+                    <label>密码长度范围</label>
+                    <div class="range-inputs">
+                        <input type="number" v-model="minLength" min="6" class="form-input" />
+                        <span> - </span>
+                        <input type="number" v-model="maxLength" :min="minLength" class="form-input" />
+                    </div>
+                </div>
+            </div>
+            <div class="charset-section">
+                <label class="charset-label">字符集</label>
+                <div class="charset-options">
+                    <div class="charset-option">
+                        <input type="checkbox" v-model="selectedCharsets" value="numbers" id="numbers" />
+                        <label for="numbers">数字</label>
+                        <input type="text" v-model="chars.numbers" placeholder="23456789" class="charset-input" />
+                    </div>
+                    <div class="charset-option">
+                        <input type="checkbox" v-model="selectedCharsets" value="lowercase" id="lowercase" />
+                        <label for="lowercase">小写字母</label>
+                        <input type="text" v-model="chars.lowercase" placeholder="abdefghijmnqrty" class="charset-input" />
+                    </div>
+                    <div class="charset-option">
+                        <input type="checkbox" v-model="selectedCharsets" value="uppercase" id="uppercase" />
+                        <label for="uppercase">大写字母</label>
+                        <input type="text" v-model="chars.uppercase" placeholder="ABDEFGHJLMNQRTY" class="charset-input" />
+                    </div>
+                    <div class="charset-option">
+                        <input type="checkbox" v-model="selectedCharsets" value="symbols" id="symbols" />
+                        <label for="symbols">特殊符号</label>
+                        <input type="text" v-model="chars.symbols" placeholder="@#$%&" class="charset-input" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="button" @click="resetForm" class="btn btn-reset">重置</button>
+                <button type="button" @click="generatePasswords" class="btn btn-primary">生成密码</button>
+            </div>
+        </form>
+        <div class="password-output">
+            <label>生成的密码</label>
+            <textarea v-model="generatedPasswords" rows="10" placeholder="生成的密码将显示在这里" class="output-textarea"></textarea>
+        </div>
     </div>
 </template>
 
 <script setup>
 import { ref, reactive } from 'vue';
-import {
-    NForm,
-    NFormItem,
-    NInputNumber,
-    NCheckboxGroup,
-    NCheckbox,
-    NSpace,
-    NButton,
-    NDivider,
-    NCard,
-    NInput,
-} from 'naive-ui';
 
 const passwordCount = ref(5);
 const chars = reactive({
@@ -117,6 +111,100 @@ const generatePasswords = () => {
 .password-generator {
     max-width: 600px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
+}
+
+.password-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.range-inputs {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.charset-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.charset-label {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.charset-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.charset-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.charset-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-reset {
+    background-color: #f0f0f0;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.password-output {
+    margin-top: 20px;
+}
+
+.output-textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
 }
 </style>
