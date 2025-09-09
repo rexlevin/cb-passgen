@@ -1,0 +1,9 @@
+{
+    "files": [
+        "build/**/*",
+        "logo.png",
+        "app.json",
+        "README.md"
+    ],
+    "outputDir": "./dist"
+}
