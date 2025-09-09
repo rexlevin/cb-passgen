@@ -4,14 +4,14 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>生成密码数量</label>
-                    <input type="number" v-model="passwordCount" min="1" class="form-input" />
+                    <input type="number" v-model="passwordCount" min="1" class="form-input" tabindex="-1" />
                 </div>
                 <div class="form-group">
                     <label>密码长度范围</label>
                     <div class="range-inputs">
-                        <input type="number" v-model="minLength" min="6" class="form-input" />
+                        <input type="number" v-model="minLength" min="6" class="form-input" tabindex="-1" />
                         <span> - </span>
-                        <input type="number" v-model="maxLength" :min="minLength" class="form-input" />
+                        <input type="number" v-model="maxLength" :min="minLength" class="form-input" tabindex="-1" />
                     </div>
                 </div>
             </div>
@@ -19,35 +19,35 @@
                 <label class="charset-label">字符集</label>
                 <div class="charset-options">
                     <div class="charset-option">
-                        <input type="checkbox" v-model="selectedCharsets" value="numbers" id="numbers" />
+                        <input type="checkbox" v-model="selectedCharsets" value="numbers" id="numbers" tabindex="-1" />
                         <label for="numbers">数字</label>
-                        <input type="text" v-model="chars.numbers" placeholder="23456789" class="charset-input" />
+                        <input type="text" v-model="chars.numbers" placeholder="23456789" class="charset-input" tabindex="-1" />
                     </div>
                     <div class="charset-option">
-                        <input type="checkbox" v-model="selectedCharsets" value="lowercase" id="lowercase" />
+                        <input type="checkbox" v-model="selectedCharsets" value="lowercase" id="lowercase" tabindex="-1" />
                         <label for="lowercase">小写字母</label>
-                        <input type="text" v-model="chars.lowercase" placeholder="abdefghijmnqrty" class="charset-input" />
+                        <input type="text" v-model="chars.lowercase" placeholder="abdefghijmnqrty" class="charset-input" tabindex="-1" />
                     </div>
                     <div class="charset-option">
-                        <input type="checkbox" v-model="selectedCharsets" value="uppercase" id="uppercase" />
+                        <input type="checkbox" v-model="selectedCharsets" value="uppercase" id="uppercase" tabindex="-1" />
                         <label for="uppercase">大写字母</label>
-                        <input type="text" v-model="chars.uppercase" placeholder="ABDEFGHJLMNQRTY" class="charset-input" />
+                        <input type="text" v-model="chars.uppercase" placeholder="ABDEFGHJLMNQRTY" class="charset-input" tabindex="-1" />
                     </div>
                     <div class="charset-option">
-                        <input type="checkbox" v-model="selectedCharsets" value="symbols" id="symbols" />
+                        <input type="checkbox" v-model="selectedCharsets" value="symbols" id="symbols" tabindex="-1" />
                         <label for="symbols">特殊符号</label>
-                        <input type="text" v-model="chars.symbols" placeholder="@#$%&" class="charset-input" />
+                        <input type="text" v-model="chars.symbols" placeholder="@#$%&" class="charset-input" tabindex="-1" />
                     </div>
                 </div>
             </div>
             <div class="form-actions">
-                <button type="button" @click="resetForm" class="btn btn-reset">重置</button>
-                <button type="button" @click="generatePasswords" class="btn btn-primary">生成密码</button>
+                <button type="button" @click="resetForm" class="btn btn-reset" tabindex="-1">重置</button>
+                <button type="button" @click="generatePasswords" class="btn btn-primary" tabindex="-1">生成密码</button>
             </div>
         </form>
         <div class="password-output">
             <label>生成的密码</label>
-            <textarea v-model="generatedPasswords" rows="7" placeholder="生成的密码将显示在这里" class="output-textarea"></textarea>
+            <textarea v-model="generatedPasswords" rows="7" placeholder="生成的密码将显示在这里" class="output-textarea" tabindex="-1"></textarea>
         </div>
     </div>
 </template>
