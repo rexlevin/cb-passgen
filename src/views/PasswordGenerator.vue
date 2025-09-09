@@ -47,7 +47,7 @@
         </form>
         <div class="password-output">
             <label>生成的密码</label>
-            <textarea v-model="generatedPasswords" rows="10" placeholder="生成的密码将显示在这里" class="output-textarea"></textarea>
+            <textarea v-model="generatedPasswords" rows="9" placeholder="生成的密码将显示在这里" class="output-textarea"></textarea>
         </div>
     </div>
 </template>
@@ -137,6 +137,7 @@ const generatePasswords = () => {
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 100%;
+    font-size: 16px;
 }
 
 .range-inputs {
@@ -173,6 +174,7 @@ const generatePasswords = () => {
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 200px;
+    font-size: 16px;
 }
 
 .form-actions {
@@ -185,6 +187,7 @@ const generatePasswords = () => {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 .btn-reset {
