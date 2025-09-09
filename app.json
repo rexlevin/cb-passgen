@@ -1,0 +1,23 @@
+{
+    "name": "passgen",
+    "id": "com.github.rexlevin.cb-passgen",
+    "description": "PassGen - 密码生成器",
+    "author": "lizl6",
+    "homepage": "https://github.com/rexlevin/cb-passgen",
+    "main": "build/index.html",
+    "logo": "logo.png",
+    "version": "0.0.1",
+    "window": {
+        "minWidth": 700,
+        "minHeight": 650,
+        "width": 700,
+        "height": 650,
+        "icon": "logo.png",
+        "resizable": true,
+        "webPreferences": {
+        }
+    },
+    "platform": ["windows", "darwin", "linux"],
+    "categories": ["utility"],
+    "tags": ["password", "密码生成器", "密码"]
+}

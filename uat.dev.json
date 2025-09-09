@@ -1,0 +1,4 @@
+{
+    "main": "http://localhost:5174/",
+    "devTools": "detach"
+}
