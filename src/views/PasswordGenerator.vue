@@ -111,7 +111,7 @@ const generatePasswords = () => {
 .password-generator {
     max-width: 600px;
     margin: 0 auto;
-    padding: 10px;
+    padding: 0 10px;
 }
 
 .password-form {
@@ -121,15 +121,18 @@ const generatePasswords = () => {
 }
 
 .form-row {
-    display: flex;
-    gap: 10px;
-    align-items: center;
+    display: block;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.form-group:first-child label {
+    white-space: nowrap;
 }
 
 .form-input {
